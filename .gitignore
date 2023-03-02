@@ -78,5 +78,5 @@ crashlytics-build.properties
 /Packages/com.ptc.vuforia.engine-10.10.2.tgz
 
 #Vuforia shite
-VuforiaConfiguration.asset
-VuforiaConfiguration.asset.meta
+/Assets/Resources/VuforiaConfiguration.asset
+/Assets/Resources/VuforiaConfiguration.asset.meta
