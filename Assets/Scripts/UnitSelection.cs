@@ -1,5 +1,5 @@
 using System;
-using System.Diagnostics;
+using System.Collections;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
@@ -8,10 +8,13 @@ public class UnitSelection : MonoBehaviour
     public LayerMask selectableUnitsLayer;
     public GameObject selectionCircle;
     private GameObject selectedUnit;
-    private float circleOffset = 0.5f;
+    private float circleOffset = 0.3f;
+    
     public enum AttackType { None, ranged, melee };
     public GameObject attackCanvas;
     public AttackType selectedAttack;
+    
+    public GameObject outOfRangeText;
 
     private void Start()
     {
@@ -50,6 +53,7 @@ public class UnitSelection : MonoBehaviour
                         }
                         else
                         {
+                            displayOutOfRangeMessage();
                             Debug.Log("Target out of range");
                         }
                     } else if (selectedUnit == null)
@@ -74,6 +78,16 @@ public class UnitSelection : MonoBehaviour
         Debug.Log("selectedAttack" + selectedAttack);
     }
     
+    
+    private void displayOutOfRangeMessage() {
+        outOfRangeText.SetActive(true);
+        StartCoroutine(hideOutOfRangeMessage());
+    }
+
+    private IEnumerator hideOutOfRangeMessage() {
+        yield return new WaitForSeconds(2f);
+        outOfRangeText.SetActive(false);
+    }
 
     private void deselectUnit()
     {
@@ -89,7 +103,7 @@ public class UnitSelection : MonoBehaviour
         switch (selectedAttack)
         {
             case AttackType.melee:
-                return 0.3f;
+                return 0.001f;
             case AttackType.ranged:
                 return 15f;
             default:
