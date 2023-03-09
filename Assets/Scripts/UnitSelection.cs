@@ -16,6 +16,9 @@ public class UnitSelection : MonoBehaviour
     
     public GameObject outOfRangeText;
 
+    public GameObject meleeButton;
+    public GameObject rangedButton;
+    
     private void Start()
     {
         selectedAttack = AttackType.None;
@@ -50,15 +53,14 @@ public class UnitSelection : MonoBehaviour
                         if (distance <= getAttackDistance())
                         {
                             Debug.Log(selectedUnit.name + " attacked " + hitUnit.name + "with" + selectedAttack);
+                            selectedUnit.transform.LookAt(hitUnit.transform);
                         }
                         else
                         {
                             displayOutOfRangeMessage();
-                            Debug.Log("Target out of range");
                         }
                     } else if (selectedUnit == null)
                     {
-
                         // Select the new unit and create the selection circle
                         selectedUnit = hitUnit;
                         Debug.Log("Unity Selected");
@@ -72,10 +74,10 @@ public class UnitSelection : MonoBehaviour
         }
     }
 
-    public void selectMeleeAttack(String attackType)
+    public void selectAttack(String attackType)
     {
         selectedAttack = (AttackType) Enum.Parse(typeof(AttackType), attackType, true);
-        Debug.Log("selectedAttack" + selectedAttack);
+        Debug.Log("selectedAttack :" + selectedAttack);
     }
     
     
