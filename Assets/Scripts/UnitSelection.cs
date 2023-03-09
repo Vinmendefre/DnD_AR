@@ -15,6 +15,8 @@ public class UnitSelection : MonoBehaviour
     public AttackType selectedAttack;
     
     public GameObject outOfRangeText;
+
+    public GameObject attackSlectionIndicator;
     
     private void Start()
     {
@@ -74,6 +76,8 @@ public class UnitSelection : MonoBehaviour
     public void selectAttack(String attackType)
     {
         selectedAttack = (AttackType) Enum.Parse(typeof(AttackType), attackType, true);
+        attackSlectionIndicator.transform.position = GameObject.Find(attackType + "Button").transform.position +  new Vector3(-50f, 0f,0f);
+        attackSlectionIndicator.SetActive(true);
         Debug.Log("selectedAttack :" + selectedAttack);
     }
     
