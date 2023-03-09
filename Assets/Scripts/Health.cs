@@ -9,7 +9,7 @@ namespace DefaultNamespace
         [SerializeField] private float currentHealth;
         [SerializeField] private float maxHealth = 100f;
         [SerializeField] private HealthBar healthBar;
-        public bool isDead = false;
+        [SerializeField] private bool isDead = false;
 
         public float CurrentHealth
         {
@@ -25,16 +25,6 @@ namespace DefaultNamespace
             {
                 healthBar.SetMaxHealth(maxHealth);
             }
-        }
-
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.F))
-            {
-                Debug.Log("Got key down!!!!!");
-                TakeDamage(20f);
-            }
-
         }
 
         public void TakeDamage(float number)
