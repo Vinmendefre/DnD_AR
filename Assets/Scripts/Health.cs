@@ -1,6 +1,4 @@
-﻿using System;
-using Unity.VisualScripting;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace DefaultNamespace
 {
@@ -9,7 +7,7 @@ namespace DefaultNamespace
         [SerializeField] private float currentHealth;
         [SerializeField] private float maxHealth = 100f;
         [SerializeField] private HealthBar healthBar;
-        [SerializeField] private bool isDead = false;
+        public bool isDead = false;
 
         public float CurrentHealth
         {
@@ -19,11 +17,23 @@ namespace DefaultNamespace
 
         void Start()
         {
-            CurrentHealth = maxHealth;
-
-            if (healthBar != null)
+            foreach (Transform thing in transform)
             {
-                healthBar.SetMaxHealth(maxHealth);
+                if (thing.transform.name == "Canvas")
+                {
+                    healthBar = thing.Find("Health Bar").GetComponent<HealthBar>();
+                }
+            }
+
+            CurrentHealth = maxHealth;
+            healthBar.SetMaxHealth(maxHealth);
+        }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                TakeDamage(20);
             }
         }
 
@@ -32,11 +42,7 @@ namespace DefaultNamespace
             if (currentHealth > 0)
             {
                 CurrentHealth -= number;
-
-                if (healthBar != null)
-                {
-                    healthBar.SetHealth(CurrentHealth);
-                }
+                healthBar.SetHealth(CurrentHealth);
             }
 
             if (currentHealth <= 0)
