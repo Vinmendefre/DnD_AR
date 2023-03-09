@@ -15,9 +15,6 @@ public class UnitSelection : MonoBehaviour
     public AttackType selectedAttack;
     
     public GameObject outOfRangeText;
-
-    public GameObject meleeButton;
-    public GameObject rangedButton;
     
     private void Start()
     {
