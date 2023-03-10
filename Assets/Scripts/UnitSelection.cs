@@ -8,6 +8,7 @@ public class UnitSelection : MonoBehaviour
 {
     [SerializeField] private LayerMask selectableUnitsLayer;
     [SerializeField] private GameObject selectionSphere;
+    [SerializeField] private AttackAnimator attackAnimator;
     private GameObject selectedUnit;
     private float circleOffset = 0.3f;
     
@@ -31,12 +32,12 @@ public class UnitSelection : MonoBehaviour
         selectionSphere = GameObject.Find("SelectionSphere");
         selectionSphere.SetActive(false);
         selectableUnitsLayer = LayerMask.GetMask("selectableUnitsLayer");
+        attackAnimator = FindObjectOfType<AttackAnimator>();
     }
 
     private void Update()
     {
-        // Check for mouse click
-        
+
         if (Input.GetMouseButtonDown(0))
         {
             // Raycast from camera to screen position
@@ -45,13 +46,11 @@ public class UnitSelection : MonoBehaviour
             
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, selectableUnitsLayer))
             {
-                // Check if the raycast hit a selectable unit
                 GameObject hitUnit = hit.collider.gameObject;
                 if (hitUnit.CompareTag("selectableUnit"))
                 {
                     if (selectedUnit != null && hitUnit == selectedUnit)
                     {
-                        // If the clicked unit is already selected, deselect it
                         deselectUnit();
                         return;
                     }
@@ -62,7 +61,8 @@ public class UnitSelection : MonoBehaviour
                         if (distance <= getAttackDistance())
                         {
                             Debug.Log(selectedUnit.name + " attacked " + hitUnit.name + "with" + selectedAttack);
-                            selectedUnit.transform.LookAt(hitUnit.transform);
+                            attackAnimator.animateAttack(selectedUnit, hitUnit);
+                            
                             UnitHealth hitUnitUnitHealth = hitUnit.GetComponent<UnitHealth>();
                             hitUnitUnitHealth.TakeDamage(15f);
                         }
@@ -72,17 +72,19 @@ public class UnitSelection : MonoBehaviour
                         }
                     } else if (selectedUnit == null)
                     {
-                        // Select the new unit and create the selection circle
-                        selectedUnit = hitUnit;
-                        Debug.Log("Unity Selected");
-                        selectionSphere.transform.position = selectedUnit.transform.position + Vector3.up * circleOffset;
-                        selectionSphere.SetActive(true);
-                        attackPanel.SetActive(true);
+                        selectUnit(hitUnit);
                     }
-                    
                 }
             }
         }
+    }
+
+    private void selectUnit(GameObject hitUnit)
+    {
+        selectedUnit = hitUnit;
+        selectionSphere.transform.position = selectedUnit.transform.position + Vector3.up * circleOffset;
+        selectionSphere.SetActive(true);
+        attackPanel.SetActive(true);
     }
 
     public void selectAttack(String attackType)
@@ -111,7 +113,6 @@ public class UnitSelection : MonoBehaviour
         selectedUnit = null;
         selectedAttack = AttackType.None;
         attackSelectionIndicator.SetActive(false);
-        Debug.Log("unit deselected");
     }
 
     private float getAttackDistance()
@@ -119,7 +120,7 @@ public class UnitSelection : MonoBehaviour
         switch (selectedAttack)
         {
             case AttackType.melee:
-                return 0.001f;
+                return 0.05f;
             case AttackType.ranged:
                 return 15f;
             default:
