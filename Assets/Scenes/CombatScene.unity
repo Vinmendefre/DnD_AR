@@ -343,7 +343,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &255751971
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2653,7 +2653,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!135 &1127876516
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3078,12 +3078,12 @@ GameObject:
   - component: {fileID: 1771748987}
   - component: {fileID: 1771748986}
   m_Layer: 5
-  m_Name: AttackPanel
+  m_Name: attackPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1771748985
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3186,7 +3186,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1804499906
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3276,11 +3276,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectableUnitsLayer:
     serializedVersion: 2
-    m_Bits: 8
-  selectionCircle: {fileID: 1127876515}
-  attackCanvas: {fileID: 1771748984}
-  outOfRangeText: {fileID: 255751970}
-  attackSlectionIndicator: {fileID: 1804499905}
+    m_Bits: 0
+  selectionSphere: {fileID: 0}
+  attackPanel: {fileID: 0}
+  outOfRangePanel: {fileID: 0}
+  attackSelectionIndicator: {fileID: 0}
 --- !u!4 &1822072646
 Transform:
   m_ObjectHideFlags: 0

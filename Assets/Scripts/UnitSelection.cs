@@ -6,22 +6,31 @@ using Debug = UnityEngine.Debug;
 
 public class UnitSelection : MonoBehaviour
 {
-    public LayerMask selectableUnitsLayer;
-    public GameObject selectionSphere;
+    [SerializeField] private LayerMask selectableUnitsLayer;
+    [SerializeField] private GameObject selectionSphere;
     private GameObject selectedUnit;
     private float circleOffset = 0.3f;
     
-    public enum AttackType { None, ranged, melee };
-    public GameObject attackPanel;
+    private enum AttackType { None, ranged, melee };
+    [SerializeField] private GameObject attackPanel;
     private AttackType selectedAttack;
     
-    public GameObject outOfRangePanel;
+    [SerializeField] private GameObject outOfRangePanel;
 
-    public GameObject attackSlectionIndicator;
+    [SerializeField] private GameObject attackSelectionIndicator;
     
     private void Start()
     {
         selectedAttack = AttackType.None;
+        attackSelectionIndicator = GameObject.Find("attackSelectionIndicator");
+        attackSelectionIndicator.SetActive(false);
+        attackPanel = GameObject.Find("attackPanel");
+        attackPanel.SetActive(false);
+        outOfRangePanel = GameObject.Find("outOfRangePanel");
+        outOfRangePanel.SetActive(false);
+        selectionSphere = GameObject.Find("SelectionSphere");
+        selectionSphere.SetActive(false);
+        selectableUnitsLayer = LayerMask.GetMask("selectableUnitsLayer");
     }
 
     private void Update()
@@ -77,8 +86,8 @@ public class UnitSelection : MonoBehaviour
     public void selectAttack(String attackType)
     {
         selectedAttack = (AttackType) Enum.Parse(typeof(AttackType), attackType, true);
-        attackSlectionIndicator.transform.position = GameObject.Find(attackType + "Button").transform.position +  new Vector3(-50f, 0f,0f);
-        attackSlectionIndicator.SetActive(true);
+        attackSelectionIndicator.transform.position = GameObject.Find(attackType + "Button").transform.position +  new Vector3(-50f, 0f,0f);
+        attackSelectionIndicator.SetActive(true);
         Debug.Log("selectedAttack :" + selectedAttack);
     }
     
@@ -99,6 +108,7 @@ public class UnitSelection : MonoBehaviour
         attackPanel.SetActive(false);
         selectedUnit = null;
         selectedAttack = AttackType.None;
+        attackSelectionIndicator.SetActive(false);
         Debug.Log("unit deselected");
     }
 
