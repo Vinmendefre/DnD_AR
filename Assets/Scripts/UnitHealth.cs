@@ -2,7 +2,7 @@
 
 namespace DefaultNamespace
 {
-    public class Health : MonoBehaviour
+    public class UnitHealth : MonoBehaviour
     {
         [SerializeField] private float currentHealth;
         [SerializeField] private float maxHealth = 100f;

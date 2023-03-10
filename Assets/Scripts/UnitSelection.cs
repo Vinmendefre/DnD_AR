@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
+using DefaultNamespace;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Debug = UnityEngine.Debug;
 
 public class UnitSelection : MonoBehaviour
@@ -63,6 +63,8 @@ public class UnitSelection : MonoBehaviour
                         {
                             Debug.Log(selectedUnit.name + " attacked " + hitUnit.name + "with" + selectedAttack);
                             selectedUnit.transform.LookAt(hitUnit.transform);
+                            UnitHealth hitUnitUnitHealth = hitUnit.GetComponent<UnitHealth>();
+                            hitUnitUnitHealth.TakeDamage(15f);
                         }
                         else
                         {
