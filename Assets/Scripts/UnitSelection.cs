@@ -1,20 +1,21 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Debug = UnityEngine.Debug;
 
 public class UnitSelection : MonoBehaviour
 {
     public LayerMask selectableUnitsLayer;
-    public GameObject selectionCircle;
+    public GameObject selectionSphere;
     private GameObject selectedUnit;
     private float circleOffset = 0.3f;
     
     public enum AttackType { None, ranged, melee };
-    public GameObject attackCanvas;
-    public AttackType selectedAttack;
+    public GameObject attackPanel;
+    private AttackType selectedAttack;
     
-    public GameObject outOfRangeText;
+    public GameObject outOfRangePanel;
 
     public GameObject attackSlectionIndicator;
     
@@ -63,9 +64,9 @@ public class UnitSelection : MonoBehaviour
                         // Select the new unit and create the selection circle
                         selectedUnit = hitUnit;
                         Debug.Log("Unity Selected");
-                        selectionCircle.transform.position = selectedUnit.transform.position + Vector3.up * circleOffset;
-                        selectionCircle.SetActive(true);
-                        attackCanvas.SetActive(true);
+                        selectionSphere.transform.position = selectedUnit.transform.position + Vector3.up * circleOffset;
+                        selectionSphere.SetActive(true);
+                        attackPanel.SetActive(true);
                     }
                     
                 }
@@ -83,19 +84,19 @@ public class UnitSelection : MonoBehaviour
     
     
     private void displayOutOfRangeMessage() {
-        outOfRangeText.SetActive(true);
+        outOfRangePanel.SetActive(true);
         StartCoroutine(hideOutOfRangeMessage());
     }
 
     private IEnumerator hideOutOfRangeMessage() {
         yield return new WaitForSeconds(2f);
-        outOfRangeText.SetActive(false);
+        outOfRangePanel.SetActive(false);
     }
 
     private void deselectUnit()
     {
-        selectionCircle.SetActive(false);
-        attackCanvas.SetActive(false);
+        selectionSphere.SetActive(false);
+        attackPanel.SetActive(false);
         selectedUnit = null;
         selectedAttack = AttackType.None;
         Debug.Log("unit deselected");
