@@ -12,7 +12,7 @@ public class UnitSelection : MonoBehaviour
     private GameObject selectedUnit;
     private float circleOffset = 0.3f;
     
-    private enum AttackType { None, ranged, melee };
+    public enum AttackType { None, ranged, melee };
     [SerializeField] private GameObject attackPanel;
     private AttackType selectedAttack;
     
@@ -61,7 +61,7 @@ public class UnitSelection : MonoBehaviour
                         if (distance <= getAttackDistance())
                         {
                             Debug.Log(selectedUnit.name + " attacked " + hitUnit.name + "with" + selectedAttack);
-                            attackAnimator.animateAttack(selectedUnit, hitUnit);
+                            attackAnimator.animateAttack(selectedUnit, hitUnit, selectedAttack);
                             
                             UnitHealth hitUnitUnitHealth = hitUnit.GetComponent<UnitHealth>();
                             hitUnitUnitHealth.TakeDamage(15f);
