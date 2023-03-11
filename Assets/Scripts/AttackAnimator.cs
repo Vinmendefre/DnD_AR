@@ -25,6 +25,13 @@ public class AttackAnimator : MonoBehaviour
         }
         StartCoroutine(returnToIdleAnimation(animation));
     }
+
+    public void playDeathAnimation(GameObject hitUnit)
+    {
+        Animation animation = hitUnit.GetComponent<Animation>();
+        // animation["death"].wrapMode = WrapMode.Loop;
+        animation.Play("death");
+    }
     
     private IEnumerator returnToIdleAnimation(Animation animation) {
         yield return new WaitForSeconds(3f);

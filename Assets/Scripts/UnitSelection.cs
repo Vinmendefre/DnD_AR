@@ -65,6 +65,10 @@ public class UnitSelection : MonoBehaviour
                             
                             UnitHealth hitUnitUnitHealth = hitUnit.GetComponent<UnitHealth>();
                             hitUnitUnitHealth.TakeDamage(15f);
+                            if (hitUnitUnitHealth.isDead)
+                            {
+                                attackAnimator.playDeathAnimation(hitUnit);
+                            }
                         }
                         else
                         {
