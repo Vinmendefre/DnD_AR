@@ -419,7 +419,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &255751971
 RectTransform:
   m_ObjectHideFlags: 0
@@ -583,7 +583,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 2
-  m_Camera: {fileID: 814565025}
+  m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -2380,7 +2380,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100702, guid: a8fe9acb1e0f9f74c81a0ac4738f9efe, type: 3}
       propertyPath: m_Name
-      value: GOBLIN 2
+      value: ANGY GOBLIN
       objectReference: {fileID: 0}
     - target: {fileID: 100702, guid: a8fe9acb1e0f9f74c81a0ac4738f9efe, type: 3}
       propertyPath: m_Layer
@@ -4391,7 +4391,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100702, guid: e3f2f30df76370440ae05339305537dd, type: 3}
       propertyPath: m_Name
-      value: GOBLIN
+      value: GOBLIN COWBOY
       objectReference: {fileID: 0}
     - target: {fileID: 100702, guid: e3f2f30df76370440ae05339305537dd, type: 3}
       propertyPath: m_Layer
@@ -4551,7 +4551,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: d97b59ac0fbd1254cb5e45695d2c9aa2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4718,7 +4718,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 2
-  m_Camera: {fileID: 814565025}
+  m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -5320,7 +5320,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1771748985
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5399,7 +5399,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1804499906
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5623,12 +5623,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectableUnitsLayer:
     serializedVersion: 2
-    m_Bits: 8
-  selectionSphere: {fileID: 1127876515}
-  attackAnimator: {fileID: 2050425756}
-  attackPanel: {fileID: 1771748984}
-  outOfRangePanel: {fileID: 255751970}
-  attackSelectionIndicator: {fileID: 1804499905}
+    m_Bits: 0
+  selectionSphere: {fileID: 0}
+  attackAnimator: {fileID: 0}
+  attackPanel: {fileID: 0}
+  outOfRangePanel: {fileID: 0}
+  attackSelectionIndicator: {fileID: 0}
 --- !u!4 &1822072646
 Transform:
   m_ObjectHideFlags: 0
