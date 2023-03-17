@@ -45,7 +45,7 @@ public class CheckZoneScript : MonoBehaviour
         };
     }
 
-    private bool diceVelocityIsZero()
+    public bool diceVelocityIsZero()
     {
         return diceVelocity is { x: 0f, y: 0f, z: 0f };
     }

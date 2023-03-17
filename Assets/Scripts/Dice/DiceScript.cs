@@ -15,13 +15,18 @@ public class DiceScript : MonoBehaviour
 
         if (spaceKeyIsPressed())
         {
-            NumberTextScript.diceNumber = 0;
-            moveToRandomPosition();
-            transform.rotation = Quaternion.identity;
-            resetVelocity();
-            addRandomForce();
-            addRandomTorque();
+            rollDice();
         }
+    }
+
+    public void rollDice()
+    {
+        NumberTextScript.diceNumber = 0;
+        moveToRandomPosition();
+        transform.rotation = Quaternion.identity;
+        resetVelocity();
+        addRandomForce();
+        addRandomTorque();
     }
 
     private bool spaceKeyIsPressed()
@@ -44,15 +49,15 @@ public class DiceScript : MonoBehaviour
 
     private void addRandomForce()
     {
-        float forceUp = Random.Range(1700, 2500);
+        float forceUp = Random.Range(65, 110);
         rb.AddForce(transform.up * forceUp);
     }
 
     private void moveToRandomPosition()
     {
-        float posX = Random.Range(-3, 3);
-        float posY = Random.Range(2, 4);
-        float posZ = Random.Range(-3, 3);
+        float posX = Random.Range(-0.03f, 0.03f);
+        float posY = Random.Range(0.02f, 0.04f);
+        float posZ = Random.Range(-0.03f, 0.03f);
         transform.position = new Vector3(posX, posY, posZ);
     }
 }
