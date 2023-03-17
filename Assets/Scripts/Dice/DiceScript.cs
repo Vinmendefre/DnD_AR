@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DiceScript : MonoBehaviour
@@ -38,9 +36,9 @@ public class DiceScript : MonoBehaviour
 
     private void addRandomTorque()
     {
-        float dirX = Random.Range(0, 2000);
-        float dirY = Random.Range(0, 2000);
-        float dirZ = Random.Range(0, 2000);
+        float dirX = Random.Range(250, 3250);
+        float dirY = Random.Range(300, 3300);
+        float dirZ = Random.Range(350, 3350);
         rb.AddTorque(dirX, dirY, dirZ);
     }
 
@@ -53,7 +51,8 @@ public class DiceScript : MonoBehaviour
     private void moveToRandomPosition()
     {
         float posX = Random.Range(-3, 3);
+        float posY = Random.Range(2, 4);
         float posZ = Random.Range(-3, 3);
-        transform.position = new Vector3(posX, 2, posZ);
+        transform.position = new Vector3(posX, posY, posZ);
     }
 }
