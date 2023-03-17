@@ -124,9 +124,9 @@ public class UnitSelection : MonoBehaviour
         switch (selectedAttack)
         {
             case AttackType.melee:
-                return 0.05f;
+                return 0.35f;
             case AttackType.ranged:
-                return 15f;
+                return 10f;
             default:
                 return 0;
         }
