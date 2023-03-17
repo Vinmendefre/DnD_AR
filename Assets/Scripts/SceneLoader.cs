@@ -11,7 +11,7 @@ public class SceneLoader : MonoBehaviour
             SceneManager.LoadScene("Plane Tracking Scene", LoadSceneMode.Single);
         } else if (parent.Equals("Dungeon"))
         {
-            SceneManager.LoadScene("AD-2_TokenScene", LoadSceneMode.Single);
+            SceneManager.LoadScene("CombatScene", LoadSceneMode.Single);
         }
         
     }
