@@ -14,8 +14,9 @@ public class TempScript : MonoBehaviour
 
     private IEnumerator waitFordice()
     {
-        yield return 5;
-
+        yield return new WaitForSeconds(1);
+        yield return new WaitUntil(checkDiceVelocityisZero);
+        
         int number = NumberTextScript.diceNumber;
 
         if (number > 15)
