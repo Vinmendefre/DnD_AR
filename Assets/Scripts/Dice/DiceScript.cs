@@ -21,8 +21,7 @@ public class DiceScript : MonoBehaviour
 
     public void rollDice()
     {
-        Vector3 parentPosition = transform.parent.position;
-        Debug.Log("Parent position: " + parentPosition);
+        
         NumberTextScript.diceNumber = 0;
         moveToRandomPosition();
         transform.rotation = Quaternion.identity;
