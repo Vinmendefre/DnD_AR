@@ -21,6 +21,8 @@ public class DiceScript : MonoBehaviour
 
     public void rollDice()
     {
+        Vector3 parentPosition = transform.parent.position;
+        Debug.Log("Parent position: " + parentPosition);
         NumberTextScript.diceNumber = 0;
         moveToRandomPosition();
         transform.rotation = Quaternion.identity;
@@ -55,9 +57,10 @@ public class DiceScript : MonoBehaviour
 
     private void moveToRandomPosition()
     {
-        float posX = Random.Range(-0.03f, 0.03f);
-        float posY = Random.Range(0.02f, 0.04f);
-        float posZ = Random.Range(-0.03f, 0.03f);
-        transform.position = new Vector3(posX, posY, posZ);
+            string parentName = transform.parent.gameObject.name;
+            Debug.Log(parentName);
+            Bounds parentBounds = transform.parent.parent.GetComponent<Renderer>().bounds;
+            float posY = Random.Range(0.02f, 0.04f);
+            transform.position = new Vector3(parentBounds.center.x, posY, parentBounds.center.z);
     }
 }
