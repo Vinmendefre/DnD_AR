@@ -139,11 +139,11 @@ public class UnitSelection : MonoBehaviour
         yield return new WaitForSeconds(2);
         yield return new WaitUntil(checkDiceVelocityisZero);
         
-        int dieRoll = NumberTextScript.diceNumber;
+        int dieRoll = CheckZoneScript.diceNumber;
         
         if (dieRoll >= 12)
         {
-            combatLogText.text = "rolled a " + dieRoll + " and hit ";
+            combatLogText.text = "Rolled a " + dieRoll + " and hit ";
             combatLogPanel.SetActive(true);
             StartCoroutine(hideGameObject(combatLogPanel));
             attackAnimator.animateAttack(selectedUnit, hitUnit, selectedAttack);
@@ -156,10 +156,10 @@ public class UnitSelection : MonoBehaviour
             }
         } else
         {
-            combatLogText.text = "rolled a " + dieRoll + " and missed ";
+            combatLogText.text = "Rolled a " + dieRoll + " and missed ";
             combatLogPanel.SetActive(true);
             StartCoroutine(hideGameObject(combatLogPanel));
-            Debug.Log("Missed attack with : " + dieRoll);  
+            Debug.Log("Missed attack with: " + dieRoll);  
         }
     }
 

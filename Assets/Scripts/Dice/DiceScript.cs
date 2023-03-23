@@ -22,7 +22,7 @@ public class DiceScript : MonoBehaviour
     public void rollDice()
     {
         
-        NumberTextScript.diceNumber = 0;
+        CheckZoneScript.diceNumber = 0;
         moveToRandomPosition();
         transform.rotation = Quaternion.identity;
         resetVelocity();

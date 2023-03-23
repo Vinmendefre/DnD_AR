@@ -3,6 +3,7 @@ using UnityEngine;
 public class CheckZoneScript : MonoBehaviour
 {
     Vector3 diceVelocity;
+    public static int diceNumber;
 
     private void FixedUpdate()
     {
@@ -19,7 +20,7 @@ public class CheckZoneScript : MonoBehaviour
 
     private static void detectNumberOnTop(Collider col)
     {
-        NumberTextScript.diceNumber = col.gameObject.name switch
+        diceNumber = col.gameObject.name switch
         {
             "Side1" => 20,
             "Side2" => 19,
@@ -41,7 +42,7 @@ public class CheckZoneScript : MonoBehaviour
             "Side18" => 3,
             "Side19" => 2,
             "Side20" => 1,
-            _ => NumberTextScript.diceNumber
+            _ => diceNumber
         };
     }
 
