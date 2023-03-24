@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace;
 using UnityEngine;
 
 public class TresureEgg : MonoBehaviour
@@ -8,6 +9,7 @@ public class TresureEgg : MonoBehaviour
     public Animator anim;
     [SerializeField] GameObject chest;
     [SerializeField] GameObject childChest;
+    [SerializeField] private AttackAnimator attackAnimator;
     public void Start()
     {
         
@@ -21,7 +23,7 @@ public class TresureEgg : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        rollDice();
+        rollDice(other);
     }
 
     private void OnTriggerExit(Collider other)
@@ -39,28 +41,37 @@ public class TresureEgg : MonoBehaviour
         childChest.SetActive(false);
     }
 
-    public void rollDice()
+    public void rollDice(Collider other)
     {
         GameObject.Find("d20").GetComponent<DiceScript>().rollDice();
 
-        StartCoroutine(waitFordice());
+        StartCoroutine(waitFordice(other));
     }
 
-    private IEnumerator waitFordice()
+    private IEnumerator waitFordice(Collider other)
     {
         yield return new WaitForSeconds(1);
         yield return new WaitUntil(checkDiceVelocityisZero);
         
         int number = CheckZoneScript.diceNumber;
-
+        Debug.Log("WÜRFEL=>"  + number);
         if (number >= 10)
         {
             childChest.SetActive(true);
             anim.Play("open");
+            GameObject gobo = other.gameObject;               
+            UnitHealth hitUnitUnitHealth = gobo.GetComponent<UnitHealth>();
+            hitUnitUnitHealth.Heal(15f);
         }
         else if (number >= 0 && number <= 4)
         {
-            
+            GameObject gobo = other.gameObject;               
+            UnitHealth hitUnitUnitHealth = gobo.GetComponent<UnitHealth>();
+            hitUnitUnitHealth.TakeDamage(15f);
+            if (hitUnitUnitHealth.isDead)
+            {
+                attackAnimator.playDeathAnimation(gobo);
+            }
         }
         else
         {
