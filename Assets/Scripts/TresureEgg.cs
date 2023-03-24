@@ -26,10 +26,19 @@ public class TresureEgg : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        anim.Play("close");
+        if (childChest.activeSelf)
+        {
+            anim.Play("close");
+            StartCoroutine(waitForChestAnimation(childChest));
+        }
+    }
+
+    private IEnumerator waitForChestAnimation(GameObject childChest)
+    {
+        yield return new WaitForSeconds(1); 
         childChest.SetActive(false);
     }
-    
+
     public void rollDice()
     {
         GameObject.Find("d20").GetComponent<DiceScript>().rollDice();
