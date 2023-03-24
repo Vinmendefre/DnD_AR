@@ -5,17 +5,63 @@ using UnityEngine;
 
 public class TresureEgg : MonoBehaviour
 {
-    private static readonly int Color1 = Shader.PropertyToID("_Color");
     public Animator anim;
+    [SerializeField] GameObject chest;
+    [SerializeField] GameObject childChest;
+    public void Start()
+    {
+        
+        if (chest != null)
+        {
+            chest = GameObject.Find("ChestColider");
+            childChest = chest.transform.Find("Chest").gameObject;
+            childChest.SetActive(false);
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        anim.Play("open");
-        Debug.Log("HEYYYYY" + other);
+        rollDice();
     }
 
     private void OnTriggerExit(Collider other)
     {
         anim.Play("close");
-        Debug.Log("HEYYYYY" + other);
+        childChest.SetActive(false);
     }
+    
+    public void rollDice()
+    {
+        GameObject.Find("d20").GetComponent<DiceScript>().rollDice();
+
+        StartCoroutine(waitFordice());
+    }
+
+    private IEnumerator waitFordice()
+    {
+        yield return new WaitForSeconds(1);
+        yield return new WaitUntil(checkDiceVelocityisZero);
+        
+        int number = CheckZoneScript.diceNumber;
+
+        if (number >= 10)
+        {
+            childChest.SetActive(true);
+            anim.Play("open");
+        }
+        else if (number >= 0 && number <= 4)
+        {
+            
+        }
+        else
+        {
+            
+        }
+    }
+
+    private bool checkDiceVelocityisZero()
+    {
+        return GameObject.Find("DiceCheckZone").GetComponent<CheckZoneScript>().diceVelocityIsZero();
+    }
+    
 }
