@@ -17,7 +17,7 @@ public class TempScript : MonoBehaviour
         yield return new WaitForSeconds(1);
         yield return new WaitUntil(checkDiceVelocityisZero);
         
-        int number = NumberTextScript.diceNumber;
+        int number = CheckZoneScript.diceNumber;
 
         if (number > 15)
         {

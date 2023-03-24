@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using DefaultNamespace;
+using TMPro;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
@@ -17,6 +18,8 @@ public class UnitSelection : MonoBehaviour
     private AttackType selectedAttack;
     
     [SerializeField] private GameObject outOfRangePanel;
+    [SerializeField] private GameObject combatLogPanel;
+    public TMP_Text combatLogText;
 
     [SerializeField] private GameObject attackSelectionIndicator;
     
@@ -33,6 +36,8 @@ public class UnitSelection : MonoBehaviour
         selectionSphere.SetActive(false);
         selectableUnitsLayer = LayerMask.GetMask("selectableUnitsLayer");
         attackAnimator = FindObjectOfType<AttackAnimator>();
+        combatLogPanel = GameObject.Find("combatLogPanel");
+        combatLogPanel.SetActive(false);
     }
 
     private void Update()
@@ -40,7 +45,6 @@ public class UnitSelection : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            // Raycast from camera to screen position
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             
@@ -56,19 +60,11 @@ public class UnitSelection : MonoBehaviour
                     }
                     else if (selectedUnit != null && selectedAttack != AttackType.None)
                     {
-                        // Check if the selected unit can attack the clicked unit
+                        
                         float distance = Vector3.Distance(selectedUnit.transform.position, hitUnit.transform.position);
                         if (distance <= getAttackDistance())
                         {
-                            Debug.Log(selectedUnit.name + " attacked " + hitUnit.name + "with" + selectedAttack);
-                            attackAnimator.animateAttack(selectedUnit, hitUnit, selectedAttack);
-                            
-                            UnitHealth hitUnitUnitHealth = hitUnit.GetComponent<UnitHealth>();
-                            hitUnitUnitHealth.TakeDamage(15f);
-                            if (hitUnitUnitHealth.isDead)
-                            {
-                                attackAnimator.playDeathAnimation(hitUnit);
-                            }
+                            rollDice(hitUnit);
                         }
                         else
                         {
@@ -102,12 +98,12 @@ public class UnitSelection : MonoBehaviour
     
     private void displayOutOfRangeMessage() {
         outOfRangePanel.SetActive(true);
-        StartCoroutine(hideOutOfRangeMessage());
+        StartCoroutine(hideGameObject(outOfRangePanel));
     }
 
-    private IEnumerator hideOutOfRangeMessage() {
+    private IEnumerator hideGameObject(GameObject toHide) {
         yield return new WaitForSeconds(2f);
-        outOfRangePanel.SetActive(false);
+        toHide.SetActive(false);
     }
 
     private void deselectUnit()
@@ -131,5 +127,46 @@ public class UnitSelection : MonoBehaviour
                 return 0;
         }
     }
+    
+    public void rollDice(GameObject hitUnit)
+    {
+        GameObject.Find("d20").GetComponent<DiceScript>().rollDice();
+        StartCoroutine(waitFordice(hitUnit));
+    }
 
+    private IEnumerator waitFordice(GameObject hitUnit)
+    {
+        yield return new WaitForSeconds(2);
+        yield return new WaitUntil(checkDiceVelocityisZero);
+        
+        int dieRoll = CheckZoneScript.diceNumber;
+        
+        if (dieRoll >= 12)
+        {
+            combatLogText.text = "Rolled a " + dieRoll + " and hit ";
+            combatLogPanel.SetActive(true);
+            StartCoroutine(hideGameObject(combatLogPanel));
+            attackAnimator.animateAttack(selectedUnit, hitUnit, selectedAttack);
+                            
+            UnitHealth hitUnitUnitHealth = hitUnit.GetComponent<UnitHealth>();
+            hitUnitUnitHealth.TakeDamage(15f);
+            if (hitUnitUnitHealth.isDead)
+            {
+                attackAnimator.playDeathAnimation(hitUnit);
+            }
+        } else
+        {
+            combatLogText.text = "Rolled a " + dieRoll + " and missed ";
+            combatLogPanel.SetActive(true);
+            StartCoroutine(hideGameObject(combatLogPanel));
+            Debug.Log("Missed attack with: " + dieRoll);  
+        }
+    }
+
+    private bool checkDiceVelocityisZero()
+    {
+        return GameObject.Find("DiceCheckZone").GetComponent<CheckZoneScript>().diceVelocityIsZero();
+    }
+    
+    
 }
