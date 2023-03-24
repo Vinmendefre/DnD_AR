@@ -13656,7 +13656,7 @@ GameObject:
   - component: {fileID: 1883178934}
   - component: {fileID: 1883178937}
   m_Layer: 0
-  m_Name: CubeTarget
+  m_Name: AngyTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
