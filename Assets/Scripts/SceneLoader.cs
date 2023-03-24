@@ -8,11 +8,14 @@ public class SceneLoader : MonoBehaviour
     {
         if (parent.Equals("Forest"))
         {
-            SceneManager.LoadScene("Plane Tracking Scene", LoadSceneMode.Single);
+            //add scenes to be loaded once finished
+            SceneManager.LoadScene("CombatScene", LoadSceneMode.Single);
+        } else if (parent.Equals("Dungeon"))
+        {
+            SceneManager.LoadScene("CombatScene", LoadSceneMode.Single);
         } else if (parent.Equals("Dungeon"))
         {
             SceneManager.LoadScene("CombatScene", LoadSceneMode.Single);
         }
-        
     }
 }
