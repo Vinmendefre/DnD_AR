@@ -6,7 +6,7 @@ using UnityEngine;
 public class AttackAnimator : MonoBehaviour
 {
     public GameObject projectile;
-    private float launchVelocity = 150;
+    private float launchVelocity = 100;
 
     public void Start()
     {
