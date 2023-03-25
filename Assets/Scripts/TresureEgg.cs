@@ -67,8 +67,8 @@ public class TresureEgg : MonoBehaviour
 
     private IEnumerator waitFordice(Collider other)
     {
-        yield return new WaitForSeconds(1);
-        yield return new WaitUntil(checkDiceVelocityisZero);
+        // yield return new WaitForSeconds(1);
+        // yield return new WaitUntil(checkDiceVelocityisZero);
         yield return new WaitForSeconds(3);
         rolledNumber = CheckZoneScript.diceNumber;
 
@@ -80,7 +80,7 @@ public class TresureEgg : MonoBehaviour
         Debug.Log("WÜRFEL=>"  + rolledNumber);
         if (rolledNumber >= 10)
         {
-            combatLogText.text = "You rolled a " + rolledNumber + " and found a chest. Have some HP!";
+            combatLogText.text = "Rolled: " + rolledNumber + ": found a chest. Have some HP!";
             combatLogPanel.SetActive(true);
             StartCoroutine(hideGameObject(combatLogPanel));
             
@@ -93,7 +93,7 @@ public class TresureEgg : MonoBehaviour
         else if (rolledNumber >= 0 && rolledNumber <= 4)
         {
             
-            combatLogText.text = "You rolled a " + rolledNumber + ". It's a mimic. Perish!";
+            combatLogText.text = "Rolled " + rolledNumber + ". It's a mimic. Perish!";
             combatLogPanel.SetActive(true);
             StartCoroutine(hideGameObject(combatLogPanel));
 

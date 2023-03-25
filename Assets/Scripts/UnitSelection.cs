@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Security.Cryptography;
 using DefaultNamespace;
 using TMPro;
 using UnityEngine;
@@ -137,9 +138,13 @@ public class UnitSelection : MonoBehaviour
     private IEnumerator waitFordice(GameObject hitUnit)
     {
         yield return new WaitForSeconds(2);
-        yield return new WaitUntil(checkDiceVelocityisZero);
-        
+        // yield return new WaitUntil(checkDiceVelocityisZero);
         int dieRoll = CheckZoneScript.diceNumber;
+
+        if (dieRoll == 0)
+        {
+            dieRoll = RandomNumberGenerator.GetInt32(1, 21);
+        }
         
         if (dieRoll >= 12)
         {

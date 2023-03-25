@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44402242, g: 0.49316543, b: 0.5722324, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2924,6 +2924,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PreviewVisible: 1
   RuntimeOcclusion: 0
+  RuntimeCollider: 0
   mTrackableName: 
   mInitializedInEditor: 0
   mSelectedStageType: 0
@@ -5581,11 +5582,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400702, guid: a8fe9acb1e0f9f74c81a0ac4738f9efe, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.0052
+      value: 0.005
       objectReference: {fileID: 0}
     - target: {fileID: 400702, guid: a8fe9acb1e0f9f74c81a0ac4738f9efe, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.012
+      value: 0.12
       objectReference: {fileID: 0}
     - target: {fileID: 400702, guid: a8fe9acb1e0f9f74c81a0ac4738f9efe, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6107,14 +6108,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PreviewVisible: 1
   RuntimeOcclusion: 0
-  mTrackableName: generated_1
+  RuntimeCollider: 0
+  mTrackableName: goblin-marker-cowboy
   mInitializedInEditor: 1
   mDataSetPath: 
-  mAspectRatio: 0.75
+  mAspectRatio: 1.0015433
   mImageTargetType: 3
-  mWidth: 0.19999999
-  mHeight: 0.14999999
-  mRuntimeTexture: {fileID: 2800000, guid: 4e51df8ad922a15479bca1e8e27015f4, type: 3}
+  mWidth: 0.19969183
+  mHeight: 0.20000002
+  mRuntimeTexture: {fileID: 2800000, guid: b43f011bd9a6e574dbe648f8cb0aae99, type: 3}
   mMotionHint: 1
   mTrackingOptimization: 0
   mTrackingOptimizationNeedsUpgrade: 0
@@ -6127,7 +6129,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 827268435}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.147, y: 0, z: -0.121}
+  m_LocalPosition: {x: 0.6568, y: 0, z: -0.1249}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6149,7 +6151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mObserverBehaviour: {fileID: 827268437}
   mHiddenRoot: {fileID: 0}
-  mTargetName: generated_1
+  mTargetName: goblin-marker-cowboy
   mDatasetName: 
   mCastedBehaviour: {fileID: 827268437}
   mMeshFilter: {fileID: 0}
@@ -9056,7 +9058,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400702, guid: e3f2f30df76370440ae05339305537dd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0024097
+      value: 0.12
       objectReference: {fileID: 0}
     - target: {fileID: 400702, guid: e3f2f30df76370440ae05339305537dd, type: 3}
       propertyPath: m_LocalPosition.z
@@ -13907,14 +13909,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PreviewVisible: 1
   RuntimeOcclusion: 0
-  mTrackableName: Screenshot 2023-02-18 092657
+  RuntimeCollider: 0
+  mTrackableName: goblin-marker-angy
   mInitializedInEditor: 1
   mDataSetPath: 
-  mAspectRatio: 0.503937
+  mAspectRatio: 1.0025021
   mImageTargetType: 3
-  mWidth: 0.2
-  mHeight: 0.1007874
-  mRuntimeTexture: {fileID: 2800000, guid: f5e3eea7396675443918f2adab770437, type: 3}
+  mWidth: 0.19950083
+  mHeight: 0.2
+  mRuntimeTexture: {fileID: 2800000, guid: c0c2a6b9a2aa73e4d9b430dede7bd4df, type: 3}
   mMotionHint: 1
   mTrackingOptimization: 0
   mTrackingOptimizationNeedsUpgrade: 0
@@ -13949,7 +13952,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mObserverBehaviour: {fileID: 1883178935}
   mHiddenRoot: {fileID: 0}
-  mTargetName: Screenshot 2023-02-18 092657
+  mTargetName: goblin-marker-angy
   mDatasetName: 
   mCastedBehaviour: {fileID: 1883178935}
   mMeshFilter: {fileID: 0}
@@ -14172,14 +14175,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1922199684}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1927543716 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6182452670827713600, guid: cfb04594231799d4092ee0064447ce94,
