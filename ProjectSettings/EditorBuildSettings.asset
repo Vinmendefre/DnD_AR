@@ -15,6 +15,6 @@ EditorBuildSettings:
     path: Assets/Scenes/IntroScene.unity
     guid: 94819e1e9ac523d4b9edc15cc14b766c
   - enabled: 0
-    path: Assets/Scenes/DesertMap.unity
+    path: Assets/Scenes/FinalDesertMap.unity
     guid: ef5a7e1c07f66df4ca0b791c663d349d
   m_configObjects: {}

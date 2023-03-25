@@ -8,14 +8,13 @@ public class SceneLoader : MonoBehaviour
     {
         if (parent.Equals("Forest"))
         {
-            //add scenes to be loaded once finished
-            SceneManager.LoadScene("CombatScene", LoadSceneMode.Single);
-        } else if (parent.Equals("Dungeon"))
-        {
             SceneManager.LoadScene("FinalDungeonMap", LoadSceneMode.Single);
         } else if (parent.Equals("Dungeon"))
         {
-            SceneManager.LoadScene("CombatScene", LoadSceneMode.Single);
+            SceneManager.LoadScene("FinalDungeonMap", LoadSceneMode.Single);
+        } else if (parent.Equals("Desert"))
+        {
+            SceneManager.LoadScene("FinalDesertMap", LoadSceneMode.Single);
         }
     }
 }
