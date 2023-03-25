@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Security.Cryptography;
 using DefaultNamespace;
 using TMPro;
 using UnityEngine;
@@ -11,7 +12,7 @@ public class UnitSelection : MonoBehaviour
     [SerializeField] private GameObject selectionSphere;
     [SerializeField] private AttackAnimator attackAnimator;
     private GameObject selectedUnit;
-    private float circleOffset = 0.3f;
+    private float circleOffset = 0.13f;
     
     public enum AttackType { None, ranged, melee };
     [SerializeField] private GameObject attackPanel;
@@ -90,7 +91,7 @@ public class UnitSelection : MonoBehaviour
     public void selectAttack(String attackType)
     {
         selectedAttack = (AttackType) Enum.Parse(typeof(AttackType), attackType, true);
-        attackSelectionIndicator.transform.position = GameObject.Find(attackType + "Button").transform.position +  new Vector3(-50f, 0f,0f);
+        attackSelectionIndicator.transform.position = GameObject.Find(attackType + "Button").transform.position +  new Vector3(-80f, 0f,0f);
         attackSelectionIndicator.SetActive(true);
         Debug.Log("selectedAttack :" + selectedAttack);
     }
@@ -137,9 +138,13 @@ public class UnitSelection : MonoBehaviour
     private IEnumerator waitFordice(GameObject hitUnit)
     {
         yield return new WaitForSeconds(2);
-        yield return new WaitUntil(checkDiceVelocityisZero);
-        
+        // yield return new WaitUntil(checkDiceVelocityisZero);
         int dieRoll = CheckZoneScript.diceNumber;
+
+        if (dieRoll == 0)
+        {
+            dieRoll = RandomNumberGenerator.GetInt32(1, 21);
+        }
         
         if (dieRoll >= 12)
         {
