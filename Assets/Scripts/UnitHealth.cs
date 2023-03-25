@@ -28,15 +28,7 @@ namespace DefaultNamespace
             CurrentHealth = maxHealth;
             healthBar.SetMaxHealth(maxHealth);
         }
-
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                TakeDamage(20);
-            }
-        }
-
+        
         public void TakeDamage(float number)
         {
             if (currentHealth > 0)
@@ -49,6 +41,29 @@ namespace DefaultNamespace
             {
                 isDead = true;
             }
+        }
+        
+        
+        public void Heal(float number)
+        {
+            if (CurrentHealth >= maxHealth)
+            {
+                //TODO nachricht leben voll
+                return;
+            }
+            if (CurrentHealth > 0)
+            {
+                if (CurrentHealth + number <= maxHealth)
+                {
+                    currentHealth += number;
+                }
+                else
+                {
+                    currentHealth = maxHealth;
+                }
+                healthBar.SetHealth(CurrentHealth);
+            }
+            
         }
     }
 }
