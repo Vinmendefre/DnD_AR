@@ -11,7 +11,7 @@ public class UnitSelection : MonoBehaviour
     [SerializeField] private GameObject selectionSphere;
     [SerializeField] private AttackAnimator attackAnimator;
     private GameObject selectedUnit;
-    private float circleOffset = 0.3f;
+    private float circleOffset = 0.13f;
     
     public enum AttackType { None, ranged, melee };
     [SerializeField] private GameObject attackPanel;
@@ -90,7 +90,7 @@ public class UnitSelection : MonoBehaviour
     public void selectAttack(String attackType)
     {
         selectedAttack = (AttackType) Enum.Parse(typeof(AttackType), attackType, true);
-        attackSelectionIndicator.transform.position = GameObject.Find(attackType + "Button").transform.position +  new Vector3(-50f, 0f,0f);
+        attackSelectionIndicator.transform.position = GameObject.Find(attackType + "Button").transform.position +  new Vector3(-80f, 0f,0f);
         attackSelectionIndicator.SetActive(true);
         Debug.Log("selectedAttack :" + selectedAttack);
     }
