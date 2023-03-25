@@ -5,15 +5,15 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: Assets/Scenes/IntroScene.unity
+    guid: 94819e1e9ac523d4b9edc15cc14b766c
   - enabled: 1
     path: Assets/Scenes/FinalForesttMap.unity
     guid: a1bc60b5b7e51334196518ed8dfb2c7d
   - enabled: 0
     path: Assets/Scenes/FinalDungeonMap.unity
     guid: 0a99d0276283a60439b718895c2da696
-  - enabled: 0
-    path: Assets/Scenes/IntroScene.unity
-    guid: 94819e1e9ac523d4b9edc15cc14b766c
   - enabled: 0
     path: Assets/Scenes/FinalDesertMap.unity
     guid: ef5a7e1c07f66df4ca0b791c663d349d
