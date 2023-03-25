@@ -8,7 +8,7 @@ public class SceneLoader : MonoBehaviour
     {
         if (parent.Equals("Forest"))
         {
-            SceneManager.LoadScene("FinalDungeonMap", LoadSceneMode.Single);
+            SceneManager.LoadScene("FinalForesttMap", LoadSceneMode.Single);
         } else if (parent.Equals("Dungeon"))
         {
             SceneManager.LoadScene("FinalDungeonMap", LoadSceneMode.Single);
