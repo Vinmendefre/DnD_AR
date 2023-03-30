@@ -22,10 +22,6 @@ public class DiceScript : MonoBehaviour
         addRandomTorque();
     }
 
-    private static bool spaceKeyIsPressed() {
-        return Input.GetKeyDown(KeyCode.Space);
-    }
-
     private static void resetVelocity() {
         rb.velocity = new Vector3(0, 0, 0);
     }
