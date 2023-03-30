@@ -14,8 +14,8 @@ public class DiceScript : MonoBehaviour
     }
 
     public void rollDice() {
-        CheckZoneScript.diceNumber = 0;
         liftUpFromCheckZone();
+        CheckZoneScript.diceNumber = 0;
         transform.rotation = Quaternion.identity;
         resetVelocity();
         addRandomForce();
