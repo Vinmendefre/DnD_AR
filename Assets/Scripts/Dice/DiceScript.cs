@@ -15,7 +15,7 @@ public class DiceScript : MonoBehaviour
 
     public void rollDice() {
         CheckZoneScript.diceNumber = 0;
-        moveToRandomPosition();
+        liftUpFromCheckZone();
         transform.rotation = Quaternion.identity;
         resetVelocity();
         addRandomForce();
@@ -40,9 +40,8 @@ public class DiceScript : MonoBehaviour
     }
 
     // ReSharper disable Unity.PerformanceAnalysis
-    private void moveToRandomPosition() {
+    private void liftUpFromCheckZone() {
         var parentBounds = transform.parent.parent.GetComponent<Renderer>().bounds;
-        var posY = Random.Range(0.02f, 0.04f);
-        transform.position = new Vector3(parentBounds.center.x, posY, parentBounds.center.z);
+        transform.position = new Vector3(parentBounds.center.x, 0.04f, parentBounds.center.z);
     }
 }
