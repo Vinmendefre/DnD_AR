@@ -5,23 +5,18 @@ public class CheckZoneScript : MonoBehaviour
     Vector3 diceVelocity;
     public static int diceNumber;
 
-    private void FixedUpdate()
-    {
+    private void FixedUpdate() {
         diceVelocity = DiceScript.diceVelocity;
     }
 
-    private void OnTriggerStay(Collider col)
-    {
-        if (diceVelocityIsZero())
-        {
+    private void OnTriggerStay(Collider col) {
+        if (diceVelocityIsZero()) {
             detectNumberOnTop(col);
         }
     }
 
-    private static void detectNumberOnTop(Collider col)
-    {
-        diceNumber = col.gameObject.name switch
-        {
+    private static void detectNumberOnTop(Collider col) {
+        diceNumber = col.gameObject.name switch {
             "Side1" => 20,
             "Side2" => 19,
             "Side3" => 18,
@@ -46,8 +41,7 @@ public class CheckZoneScript : MonoBehaviour
         };
     }
 
-    public bool diceVelocityIsZero()
-    {
+    public bool diceVelocityIsZero() {
         return diceVelocity is { x: 0f, y: 0f, z: 0f };
     }
 }

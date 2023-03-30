@@ -10,18 +10,13 @@ public class DiceScript : MonoBehaviour
     }
 
     void Update() {
-        
         diceVelocity = rb.velocity;
-
-        if (spaceKeyIsPressed())
-        {
+        if (spaceKeyIsPressed()) {
             rollDice();
         }
     }
 
-    public void rollDice()
-    {
-        
+    public void rollDice() {
         CheckZoneScript.diceNumber = 0;
         moveToRandomPosition();
         transform.rotation = Quaternion.identity;
@@ -30,34 +25,31 @@ public class DiceScript : MonoBehaviour
         addRandomTorque();
     }
 
-    private bool spaceKeyIsPressed()
-    {
+    private static bool spaceKeyIsPressed() {
         return Input.GetKeyDown(KeyCode.Space);
     }
 
-    private void resetVelocity()
-    {
+    private static void resetVelocity() {
         rb.velocity = new Vector3(0, 0, 0);
     }
 
-    private void addRandomTorque()
-    {
-        float dirX = Random.Range(250, 3250);
-        float dirY = Random.Range(300, 3300);
-        float dirZ = Random.Range(350, 3350);
-        rb.AddTorque(dirX, dirY, dirZ);
+    private static void addRandomTorque() {
+        rb.AddTorque(
+            Random.Range(250, 3250),
+            Random.Range(300, 3300),
+            Random.Range(350, 3350)
+        ); 
     }
 
-    private void addRandomForce()
-    {
-        float forceUp = Random.Range(65, 110);
+    private void addRandomForce() {
+        var forceUp = Random.Range(65, 110);
         rb.AddForce(transform.up * forceUp);
     }
 
-    private void moveToRandomPosition()
-    {
-        Bounds parentBounds = transform.parent.parent.GetComponent<Renderer>().bounds;
-        float posY = Random.Range(0.02f, 0.04f);
+    // ReSharper disable Unity.PerformanceAnalysis
+    private void moveToRandomPosition() {
+        var parentBounds = transform.parent.parent.GetComponent<Renderer>().bounds;
+        var posY = Random.Range(0.02f, 0.04f);
         transform.position = new Vector3(parentBounds.center.x, posY, parentBounds.center.z);
     }
 }
