@@ -11,9 +11,6 @@ public class DiceScript : MonoBehaviour
 
     void Update() {
         diceVelocity = rb.velocity;
-        if (spaceKeyIsPressed()) {
-            rollDice();
-        }
     }
 
     public void rollDice() {

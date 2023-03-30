@@ -5,32 +5,28 @@ using UnityEngine;
 public class TempScript : MonoBehaviour
 {
     
-    public void rollDice()
-    {
+    public void rollDice() {
         GameObject.Find("d20").GetComponent<DiceScript>().rollDice();
-
         StartCoroutine(waitFordice());
     }
 
-    private IEnumerator waitFordice()
-    {
+    // ReSharper disable Unity.PerformanceAnalysis
+    private IEnumerator waitFordice() {
         yield return new WaitForSeconds(1);
         yield return new WaitUntil(checkDiceVelocityisZero);
         
-        int number = CheckZoneScript.diceNumber;
+        var number = CheckZoneScript.diceNumber;
 
-        if (number > 15)
-        {
+        if (number > 15) {
             Debug.Log("ATTACK HIT with :" + number);
         }
-        else
-        {
+        else {
             Debug.Log("ATTACK MISS with :" + number);
         }
     }
 
-    private bool checkDiceVelocityisZero()
-    {
+    // ReSharper disable Unity.PerformanceAnalysis
+    private bool checkDiceVelocityisZero() {
         return GameObject.Find("DiceCheckZone").GetComponent<CheckZoneScript>().diceVelocityIsZero();
     }
 }
